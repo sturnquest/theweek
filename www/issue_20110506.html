@@ -48,10 +48,9 @@
 <!-- Start of first page -->
 <div data-role="page" id="contents" class="page" data-next-page="#page_1" data-prev-page="#page_3">
 
-    <div data-role="header" data-position="fixed">
+    <div class="header">
+        <a class="home-button" href="index.html" data-transition="slide" rel="external"><img src="images/home_icon.png"></a>
         <h1>The Week</h1>
-        <a href="#contents" data-icon="home" data-iconpos="notext" data-direction="reverse"
-           class="ui-btn-right jqm-home">Home</a>
     </div>
     <!-- /header -->
 
@@ -92,8 +91,10 @@
     </div>
     <!-- /content -->
 
-    <div data-role="footer" data-position="fixed">
-        <h4>All you need to know about everything that matters</h4>
+    <div class="footer footer-contents">
+        <div class="copyright">
+            &#169; Dennis Publishing Limited
+        </div>
     </div>
     <!-- /header -->
 </div>
@@ -103,10 +104,9 @@
 <!-- Start of second page -->
 <div data-role="page" id="page_1" class="article page" data-next-page="#page_2" data-prev-page="#contents">
 
-    <div data-role="header" data-position="fixed">
-        <h1>The List</h1>
-        <a href="#contents" data-icon="home" data-iconpos="notext" data-direction="reverse"
-           class="ui-btn-right jqm-home">Home</a>
+    <div class="header">
+        <a class="home-button" href="#contents" data-transition="slide"><img src="images/home_icon.png"></a>
+        <h1>The Main Stories</h1>
     </div>
     <!-- /header -->
 
@@ -156,18 +156,20 @@
     </div>
     <!-- /content -->
 
-    <div data-role="footer" data-position="fixed" class="ui-bar">
-        <a href="#page_2" data-role="button" data-icon="arrow-r" data-transition="slide">Next</a>
+    <div class="footer">
+        <div class="article-index">
+            <a href="#page_1" class="page-index selected"></a>
+            <a href="#page_2" class="page-index" data-transition="slide"></a>
+        </div>
     </div>
 </div>
 <!-- /page -->
 
 <div data-role="page" id="page_2" class="article page" data-next-page="#page_3" data-prev-page="#page_1">
 
-    <div data-role="header" data-position="fixed">
-        <h1>The List</h1>
-        <a href="#contents" data-icon="home" data-iconpos="notext" data-direction="reverse"
-           class="ui-btn-right jqm-home">Home</a>
+    <div class="header">
+        <a class="home-button" href="#contents" data-transition="slide"><img src="images/home_icon.png"></a>
+        <h1>The Main Stories</h1>
     </div>
     <!-- /header -->
 
@@ -212,17 +214,19 @@
     </div>
     <!-- /content -->
 
-    <div data-role="footer" data-position="fixed" class="ui-bar">
-        <a href="#page_3" data-role="button" data-icon="arrow-r" data-transition="slide">Next</a>
+    <div class="footer">
+        <div class="article-index">
+            <a href="#page_1" class="page-index" data-transition="slide"></a>
+            <a href="#page_2" class="page-index selected"></a>
+        </div>
     </div>
 </div>
 
 <div data-role="page" id="page_3" class="article page" data-next-page="#contents" data-prev-page="#page_2">
 
-    <div data-role="header" data-position="fixed">
-        <h1>The List</h1>
-        <a href="#contents" data-icon="home" data-iconpos="notext" data-direction="reverse"
-           class="ui-btn-right jqm-home">Home</a>
+    <div class="header">
+        <a class="home-button" href="#contents" data-transition="slide"><img src="images/home_icon.png"></a>
+        <h1>The Main Stories</h1>
     </div>
     <!-- /header -->
 
@@ -278,8 +282,10 @@
     </div>
     <!-- /content -->
 
-    <div data-role="footer" data-position="fixed" class="ui-bar">
-        <a href="#page_1" data-role="button" data-icon="arrow-r" data-transition="slide">Next</a>
+    <div class="footer">
+        <div class="article-index">
+            <a href="#page_3" class="page-index selected"></a>
+        </div>
     </div>
 </div>
 
