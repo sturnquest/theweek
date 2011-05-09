@@ -1,7 +1,3 @@
-* {
-    font-family: sans-serif;
-}
-
 div.article h2 {
     color: #ED1C24;
     font-size: 18px;
@@ -64,10 +60,30 @@ div.multicolumn4 {
 
 .header h1 {
     font-weight: lighter;
-    font-size: 18px;
+    padding-top: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 26px;
     width: 300px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.edition {
+    float: right;
+    padding-right: 10px;
+    padding-top: 15px;
+}
+
+.edition div {
+    float: left;
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+.edition-date {
+    font-family: sans-serif, arial;
+    font-weight: lighter;
 }
 
 .footer {
@@ -117,4 +133,33 @@ div.multicolumn4 {
 
 .page-index.selected {
     background: #666;
+}
+
+.content-cover {
+    float: left;
+}
+
+.content-cover img {
+    border: none;
+    width: 505px;
+}
+
+.table-of-contents {
+    padding-left: 10px;
+    float: left;
+}
+
+.table-of-contents div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #666;
+}
+
+.table-of-contents div a {
+    text-decoration: none;
+
+}
+
+.table-of-contents div a:visited {
+    text-decoration: none;
 }
