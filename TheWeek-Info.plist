@@ -15,8 +15,8 @@
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>icon.png</string>
-		<string>TheWeekIcon.png</string>
-		<string>TheWeekIcon.png</string>
+		<string>logo_theweek_icon.png</string>
+		<string>logo_theweek_icon.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.thoughtworks.presales.theweek</string>

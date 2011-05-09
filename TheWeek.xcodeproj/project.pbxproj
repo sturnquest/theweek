@@ -33,6 +33,7 @@
 		305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
 		307D28A2123043360040C0FA /* PhoneGapBuildSettings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 307D28A1123043350040C0FA /* PhoneGapBuildSettings.xcconfig */; };
 		30E1352710E2C1420031B30D /* PhoneGap.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30E1352610E2C1420031B30D /* PhoneGap.plist */; };
+		7D7859EE13789E6E0023D9D1 /* logo_theweek_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D7859ED13789E6E0023D9D1 /* logo_theweek_icon.png */; };
 		BAE09C751368074C0048E01B /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE09C741368074C0048E01B /* Default-Landscape~ipad.png */; };
 		BAE09C77136808D60048E01B /* TheWeekIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE09C76136808D60048E01B /* TheWeekIcon.png */; };
 		BAE09C79136808E00048E01B /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE09C78136808E00048E01B /* Default-Portrait~ipad.png */; };
@@ -85,6 +86,7 @@
 		307D28A1123043350040C0FA /* PhoneGapBuildSettings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = PhoneGapBuildSettings.xcconfig; sourceTree = "<group>"; };
 		30E1352610E2C1420031B30D /* PhoneGap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PhoneGap.plist; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* TheWeek_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheWeek_Prefix.pch; sourceTree = "<group>"; };
+		7D7859ED13789E6E0023D9D1 /* logo_theweek_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_theweek_icon.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TheWeek-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TheWeek-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		BAE09C741368074C0048E01B /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		BAE09C76136808D60048E01B /* TheWeekIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TheWeekIcon.png; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				7D7859ED13789E6E0023D9D1 /* logo_theweek_icon.png */,
 				BAE09C78136808E00048E01B /* Default-Portrait~ipad.png */,
 				BAE09C76136808D60048E01B /* TheWeekIcon.png */,
 				BAE09C741368074C0048E01B /* Default-Landscape~ipad.png */,
@@ -309,6 +312,7 @@
 				BAE09C751368074C0048E01B /* Default-Landscape~ipad.png in Resources */,
 				BAE09C77136808D60048E01B /* TheWeekIcon.png in Resources */,
 				BAE09C79136808E00048E01B /* Default-Portrait~ipad.png in Resources */,
+				7D7859EE13789E6E0023D9D1 /* logo_theweek_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
