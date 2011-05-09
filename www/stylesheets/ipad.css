@@ -35,11 +35,13 @@ div.multicolumn4 {
     float: left;
     margin-left: 5px;
     margin-top: 8px;
+    border: none;
 }
 
 .home-button img {
     width: 20px;
     float: left;
+    border: none;
 }
 
 .header {

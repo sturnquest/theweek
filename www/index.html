@@ -13,16 +13,16 @@
     <!--<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />-->
 
     <link rel="stylesheet" href="stylesheets/ipad.css" type="text/css"/>
-    <link rel="stylesheet" href="stylesheets/jquery.mobile-1.0a4.1.min.css" />
-	<script type="text/javascript" src="javascripts/jquery-1.5.2.min.js"></script>
-	<script type="text/javascript" src="javascripts/jquery.mobile-1.0a4.1.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/jquery.mobile-1.0a4.1.min.css"/>
+    <script type="text/javascript" src="javascripts/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.mobile-1.0a4.1.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="javascripts/phonegap.0.9.5.min.js"></script>
 </head>
 <body>
 <!-- Start of first page -->
 <div data-role="page" id="contents">
 
-    <div data-role="header" data-position="fixed">
+    <div class="header">
         <h1>The Week</h1>
     </div>
     <!-- /header -->
@@ -31,12 +31,12 @@
         <div class="ui-grid-a">
             <div class="ui-block-a">
 
-                <a href="20110409issue.html" data-transition="pop" rel="external">
+                <a href="issue_20110506.html" data-transition="pop" rel="external">
                     <img height="200px" src="images/the_week_cover_1.jpg"/></a>
-                <a href="20110409issue.html" data-transition="pop" rel="external">
+                <a href="issue_20110506.html" data-transition="pop" rel="external">
                     <img height="200px" src="images/the_week_cover_2.jpg"/>
                 </a>
-                <a href="20110409issue.html" data-transition="pop" rel="external">
+                <a href="issue_20110506.html" data-transition="pop" rel="external">
                     <img height="200px" src="images/the_week_cover_3.jpg"/>
                 </a>
 
@@ -58,8 +58,10 @@
     </div>
     <!-- /content -->
 
-    <div data-role="footer" data-position="fixed">
-        <h4>All you need to know about everything that matters</h4>
+    <div class="footer footer-contents">
+        <div class="copyright">
+            &#169; Dennis Publishing Limited
+        </div>
     </div>
     <!-- /footer -->
 </div>
