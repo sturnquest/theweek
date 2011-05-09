@@ -6,26 +6,51 @@
 
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
-    <title>The Week 9 April 2011</title>
+    <title>The Week 6 May 2011</title>
 
     <!-- iPad/iPhone specific css below, add after your main css -->
     <!--<link rel="stylesheet" media="only screen and (max-device-width: 1024px)" href="ipad.css" type="text/css" />-->
     <!--<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="iphone.css" type="text/css" />-->
 
-    <!-- If you application is targeting iOS BEFORE 4.0 you MUST put json2.js from http://www.JSON.org/json2.js into your www directory and include it here -->
-    <script type="text/javascript" charset="utf-8" src="javascripts/phonegap.0.9.5.min.js"></script>
     <link rel="stylesheet" href="stylesheets/ipad.css" type="text/css"/>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css"/>
-    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/jquery.mobile-1.0a4.1.min.css"/>
+    <script type="text/javascript" src="javascripts/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.mobile-1.0a4.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="javascripts/phonegap.0.9.5.min.js"></script>
+
+    <script type="text/javascript">
+
+        function swipe_page(to_page_id, slide_right_to_left) {
+            // JQuery mobile does not work properly for changing pages to an internal div.
+            // See: http://forum.jquery.com/topic/changepage-not-updating-hash-for-internal-div-pages
+            // To workaround supply a all parameters for page transition.
+            $.mobile.changePage(to_page_id, 'slide', slide_right_to_left, true);
+            e.stopImmediatePropagation();
+            return false;
+        }
+
+        $(function() {
+
+            $('.page').bind('swipeleft', function(e) {
+                swipe_page($.mobile.activePage.attr('data-next-page'), false);
+            });
+
+            $('.page').bind('swiperight', function(e) {
+                swipe_page($.mobile.activePage.attr('data-prev-page'), true);
+            });
+
+        });
+
+    </script>
+
 </head>
-<body onload="onBodyLoad()">
+<body>
 <!-- Start of first page -->
-<div data-role="page" id="contents">
+<div data-role="page" id="contents" class="page" data-next-page="#page_1" data-prev-page="#page_3">
 
     <div data-role="header" data-position="fixed">
         <h1>The Week</h1>
-        <a href="index.html" data-icon="home" data-iconpos="notext" data-direction="reverse"
+        <a href="#contents" data-icon="home" data-iconpos="notext" data-direction="reverse"
            class="ui-btn-right jqm-home">Home</a>
     </div>
     <!-- /header -->
@@ -33,15 +58,15 @@
     <div data-role="content">
         <div class="ui-grid-a">
             <div class="ui-block-a">
-                <img width="400px"
-                     src="http://thefinanser.co.uk/.a/6a01053620481c970b01127939f44128a4-800wi"/>
+                <img width="400px" src="images/the_week_cover_1.jpg"/>
             </div>
 
             <div class="ui-block-b">
                 <h2>News</h2>
 
                 <div data-role="controlgroup">
-                    <a href="#article" data-role="button" data-icon="arrow-r" data-iconpos="right">The main stories</a>
+                    <a href="#page_1" data-role="button" data-icon="arrow-r" data-iconpos="right"
+                       data-transition="slide">The main stories</a>
                     <a href="#politics" data-role="button" data-icon="arrow-r" data-iconpos="right">Politics</a>
                     <a href="#article" data-role="button" data-icon="arrow-r" data-iconpos="right">Europe at a
                         glance</a>
@@ -76,23 +101,21 @@
 
 
 <!-- Start of second page -->
-<div data-role="page" id="article" class="article">
+<div data-role="page" id="page_1" class="article page" data-next-page="#page_2" data-prev-page="#contents">
 
     <div data-role="header" data-position="fixed">
-        <h1>The Main stories</h1>
-        <a href="20110409issue.html" data-icon="home" data-iconpos="notext" data-direction="reverse"
+        <h1>The List</h1>
+        <a href="#contents" data-icon="home" data-iconpos="notext" data-direction="reverse"
            class="ui-btn-right jqm-home">Home</a>
     </div>
     <!-- /header -->
 
     <div data-role="content">
         <div class="multicolumn4">
-            <h2>What happened</h2>
-
-            <h1>Stalemate in Libya</h1>
+            <h1>Obama's Ground Zero visit: 5 takeaways </h1>
 
             <p>
-                <img src="images/president_obama.jpg" class="alignLeft"/>
+                <img src="images/president_obama_ground_zero.jpg" class="alignLeft"/>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin, augue ut bibendum
                 gravida, justo dolor porttitor tellus, at hendrerit elit ante vel purus. Ut tempus, mauris semper
                 bibendum congue, nulla lacus euismod nibh, a mattis sem lorem lacinia leo. Proin dapibus dolor nec nisi
@@ -106,31 +129,6 @@
                 id, vehicula id turpis. Curabitur id ligula leo, ac ultricies libero. Fusce in sapien a massa adipiscing
                 fermentum. Quisque turpis sem, vehicula tincidunt pulvinar ac, malesuada accumsan lorem. Aenean felis
                 turpis, convallis tempus bibendum vel, placerat et neque.
-            </p>
-
-            <p>
-                Donec ultricies tincidunt orci quis adipiscing. Praesent consectetur consectetur dolor quis blandit.
-                Maecenas elit augue, ultrices ut tristique in, sagittis sit amet lectus. Mauris pretium vehicula tellus
-                in viverra. Aenean lobortis, sapien id fringilla porttitor, diam risus volutpat ligula, ac tempor lacus
-                lectus eget velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                Curae; Ut et dolor enim. Donec diam magna, mollis dictum iaculis a, scelerisque sed eros. Curabitur eu
-                nisl ante. Ut sed mi auctor sapien consectetur vestibulum. Etiam vulputate velit ultricies quam
-                vestibulum sed pellentesque felis luctus. Integer ligula eros, congue nec imperdiet nec, volutpat eu
-                mauris. Maecenas nunc felis, ornare non accumsan vel, mattis id purus. Vivamus non augue nunc.
-                Pellentesque iaculis dictum nunc eu bibendum. Suspendisse varius mauris quis elit tincidunt vel rutrum
-                justo pellentesque. Fusce nec erat ut leo bibendum aliquet.
-            </p>
-
-            <p>
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam lorem
-                dolor, consequat in mattis ac, laoreet sed est. Fusce pellentesque risus ut quam feugiat vulputate.
-                Vestibulum congue tempor dui, sit amet ultricies eros vulputate eget. Proin blandit nisl non metus
-                egestas at bibendum ante posuere. Nullam at magna nisl. Sed malesuada fringilla nisl nec elementum. In
-                dapibus turpis in massa mollis sit amet dictum orci viverra. Aliquam sapien turpis, vulputate aliquet
-                pellentesque in, sollicitudin eu velit. Mauris sit amet mollis nibh. Ut commodo laoreet lacus, ut
-                vulputate tortor laoreet non. Aliquam neque nisi, cursus faucibus mattis nec, malesuada sed libero.
-                Aliquam libero risus, pellentesque bibendum elementum posuere, vulputate nec erat. Maecenas sodales
-                semper aliquet. Maecenas purus magna, rhoncus quis rutrum eu, semper et nibh.
             </p>
 
             <h2>What the editorials said</h2>
@@ -153,6 +151,28 @@
                 adipiscing dolor id viverra. Donec bibendum risus a odio posuere vel dictum dolor porta. Cras fringilla
                 ipsum at odio aliquam ultrices tempus dolor ornare. Quisque vel sodales nulla.
             </p>
+
+        </div>
+    </div>
+    <!-- /content -->
+
+    <div data-role="footer" data-position="fixed" class="ui-bar">
+        <a href="#page_2" data-role="button" data-icon="arrow-r" data-transition="slide">Next</a>
+    </div>
+</div>
+<!-- /page -->
+
+<div data-role="page" id="page_2" class="article page" data-next-page="#page_3" data-prev-page="#page_1">
+
+    <div data-role="header" data-position="fixed">
+        <h1>The List</h1>
+        <a href="#contents" data-icon="home" data-iconpos="notext" data-direction="reverse"
+           class="ui-btn-right jqm-home">Home</a>
+    </div>
+    <!-- /header -->
+
+    <div data-role="content">
+        <div class="multicolumn4">
 
             <h2>What the commentators said</h2>
 
@@ -189,86 +209,37 @@
             </p>
 
         </div>
-        <p><a href="#contents" data-direction="reverse">Back to menu</a></p>
     </div>
     <!-- /content -->
 
-    <div data-role="footer" data-position="fixed">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#article" class="ui-btn-active">The Main stories</a></li>
-                <li><a href="#politics">Politics</a></li>
-                <li><a href="#article">Europe at a glance</a></li>
-                <li><a href="#article">The world at a glance</a></li>
-            </ul>
-        </div>
-        <!-- /navbar -->
+    <div data-role="footer" data-position="fixed" class="ui-bar">
+        <a href="#page_3" data-role="button" data-icon="arrow-r" data-transition="slide">Next</a>
     </div>
-    <!-- /header -->
 </div>
-<!-- /page -->
 
-<!-- Start of second page -->
-<div data-role="page" id="politics" class="article">
+<div data-role="page" id="page_3" class="article page" data-next-page="#contents" data-prev-page="#page_2">
 
     <div data-role="header" data-position="fixed">
-        <h1>Politics</h1>
-        <a href="20110409issue.html" data-icon="home" data-iconpos="notext" data-direction="reverse"
+        <h1>The List</h1>
+        <a href="#contents" data-icon="home" data-iconpos="notext" data-direction="reverse"
            class="ui-btn-right jqm-home">Home</a>
     </div>
     <!-- /header -->
 
     <div data-role="content">
         <div class="multicolumn4">
-            <h2>Controversy of the week</h2>
-
-            <h1>The ailing Health Bill</h1>
+            <h1>Pacquiao-Mosley: Can boxing stage a comeback?</h1>
 
             <p>
-                <img
-                        src="http://4.images.theweek.com/img/dir_0059/29549_article_main.jpg?40"
-                        class="alignLeft"/>
+                <img src="images/pacquiao.jpg" class="alignLeft"/>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin, augue ut bibendum
                 gravida, justo dolor porttitor tellus, at hendrerit elit ante vel purus. Ut tempus, mauris semper
                 bibendum congue, nulla lacus euismod nibh, a mattis sem lorem lacinia leo. Proin dapibus dolor nec nisi
                 adipiscing eget tempor eros placerat. Praesent tincidunt posuere ultricies. Aenean convallis molestie
-                aliquam. Mauris ac nibh eget arcu dictum pharetra vel quis velit. Etiam sed eleifend turpis. Etiam ac
-                ante bibendum felis mattis convallis in non ipsum. Etiam tempus dictum turpis id fringilla. Fusce luctus
-                est eget tellus posuere condimentum lacinia ante dapibus. Maecenas enim tellus, egestas at egestas quis,
-                accumsan vitae leo. Donec ante tortor, posuere eget condimentum vitae, iaculis id nulla. Pellentesque
-                erat lorem, tristique cursus lobortis eu, commodo vel tellus. Vivamus pellentesque dui suscipit risus
-                molestie venenatis. Aenean cursus varius mi quis aliquet. Proin lectus ipsum, facilisis sed tristique
-                id, vehicula id turpis. Curabitur id ligula leo, ac ultricies libero. Fusce in sapien a massa adipiscing
-                fermentum. Quisque turpis sem, vehicula tincidunt pulvinar ac, malesuada accumsan lorem. Aenean felis
-                turpis, convallis tempus bibendum vel, placerat et neque.
+                aliquam. Mauris ac nibh eget arcu dictum pharetra vel quis velit. Etiam sed eleifend turpis.
             </p>
 
-            <p>
-                Donec ultricies tincidunt orci quis adipiscing. Praesent consectetur consectetur dolor quis blandit.
-                Maecenas elit augue, ultrices ut tristique in, sagittis sit amet lectus. Mauris pretium vehicula tellus
-                in viverra. Aenean lobortis, sapien id fringilla porttitor, diam risus volutpat ligula, ac tempor lacus
-                lectus eget velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                Curae; Ut et dolor enim. Donec diam magna, mollis dictum iaculis a, scelerisque sed eros. Curabitur eu
-                nisl ante. Ut sed mi auctor sapien consectetur vestibulum. Etiam vulputate velit ultricies quam
-                vestibulum sed pellentesque felis luctus. Integer ligula eros, congue nec imperdiet nec, volutpat eu
-                mauris. Maecenas nunc felis, ornare non accumsan vel, mattis id purus. Vivamus non augue nunc.
-                Pellentesque iaculis dictum nunc eu bibendum. Suspendisse varius mauris quis elit tincidunt vel rutrum
-                justo pellentesque. Fusce nec erat ut leo bibendum aliquet.
-            </p>
-
-            <p>
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam lorem
-                dolor, consequat in mattis ac, laoreet sed est. Fusce pellentesque risus ut quam feugiat vulputate.
-                Vestibulum congue tempor dui, sit amet ultricies eros vulputate eget. Proin blandit nisl non metus
-                egestas at bibendum ante posuere. Nullam at magna nisl. Sed malesuada fringilla nisl nec elementum. In
-                dapibus turpis in massa mollis sit amet dictum orci viverra. Aliquam sapien turpis, vulputate aliquet
-                pellentesque in, sollicitudin eu velit. Mauris sit amet mollis nibh. Ut commodo laoreet lacus, ut
-                vulputate tortor laoreet non. Aliquam neque nisi, cursus faucibus mattis nec, malesuada sed libero.
-                Aliquam libero risus, pellentesque bibendum elementum posuere, vulputate nec erat. Maecenas sodales
-                semper aliquet. Maecenas purus magna, rhoncus quis rutrum eu, semper et nibh.
-            </p>
-
-            <h2>Boring but important</h2>
+            <h2>What the editorials said</h2>
 
             <p>
                 Vestibulum varius condimentum nisi at malesuada. Maecenas malesuada vehicula enim non molestie. Nullam
@@ -279,17 +250,7 @@
                 Nam nisi tortor, tincidunt eget ultricies nec, porta eget sapien.
             </p>
 
-            <p>
-                Mauris condimentum vestibulum urna, eu placerat massa pulvinar at. Fusce arcu dolor, euismod at molestie
-                in, luctus id sem. Ut at ligula auctor libero facilisis pharetra. Vestibulum faucibus, nulla vitae
-                sollicitudin imperdiet, libero elit ultrices purus, gravida molestie sapien massa vitae eros. Fusce
-                bibendum pharetra lectus vel facilisis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-                posuere cubilia Curae; Ut a vestibulum ligula. Duis tincidunt consequat posuere. Mauris tempus
-                adipiscing dolor id viverra. Donec bibendum risus a odio posuere vel dictum dolor porta. Cras fringilla
-                ipsum at odio aliquam ultrices tempus dolor ornare. Quisque vel sodales nulla.
-            </p>
-
-            <h2>Good week for</h2>
+            <h2>What the commentators said</h2>
 
             <p>
                 Praesent volutpat tincidunt elementum. Sed lectus nibh, ornare non suscipit non, suscipit quis nibh.
@@ -301,17 +262,7 @@
                 Curae;
             </p>
 
-            <p>
-                Praesent volutpat tincidunt elementum. Sed lectus nibh, ornare non suscipit non, suscipit quis nibh.
-                Duis sodales dui id dui suscipit ac fermentum ligula sagittis. Morbi elit urna, aliquam sed semper at,
-                blandit non quam. Phasellus accumsan elit eu est convallis feugiat. In libero enim, aliquam quis
-                facilisis vitae, eleifend eu sapien. Donec congue massa at turpis eleifend pellentesque. Donec aliquet
-                suscipit augue, consequat ullamcorper leo mollis quis. Vivamus dui enim, dignissim eu suscipit cursus,
-                pulvinar sit amet enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-                Curae;
-            </p>
-
-            <h2>Bad week for</h2>
+            <h2>What next?</h2>
 
             <p>
                 Praesent volutpat tincidunt elementum. Sed lectus nibh, ornare non suscipit non, suscipit quis nibh.
@@ -327,20 +278,10 @@
     </div>
     <!-- /content -->
 
-    <div data-role="footer" data-position="fixed">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#article">The Main stories</a></li>
-                <li><a href="#politics" class="ui-btn-active">Politics</a></li>
-                <li><a href="#article">Europe at a glance</a></li>
-                <li><a href="#article">The world at a glance</a></li>
-            </ul>
-        </div>
-        <!-- /navbar -->
+    <div data-role="footer" data-position="fixed" class="ui-bar">
+        <a href="#page_1" data-role="button" data-icon="arrow-r" data-transition="slide">Next</a>
     </div>
-    <!-- /header -->
 </div>
-<!-- /page -->
 
 </body>
 </html>
