@@ -163,3 +163,15 @@ div.multicolumn4 {
 .table-of-contents div a:visited {
     text-decoration: none;
 }
+
+.edition {
+    float: left;
+}
+
+.cover-options {
+    clear: left;
+}
+
+.cover img {
+    height: 400px;
+}

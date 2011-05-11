@@ -33,6 +33,13 @@
 		305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
 		307D28A2123043360040C0FA /* PhoneGapBuildSettings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 307D28A1123043350040C0FA /* PhoneGapBuildSettings.xcconfig */; };
 		30E1352710E2C1420031B30D /* PhoneGap.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30E1352610E2C1420031B30D /* PhoneGap.plist */; };
+		7D3C5D15137A1E42006EEE44 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D3C5D0B137A1E42006EEE44 /* ioapi.c */; };
+		7D3C5D16137A1E42006EEE44 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D3C5D0D137A1E42006EEE44 /* mztools.c */; };
+		7D3C5D17137A1E42006EEE44 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D3C5D0F137A1E42006EEE44 /* unzip.c */; };
+		7D3C5D18137A1E42006EEE44 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 7D3C5D11137A1E42006EEE44 /* zip.c */; };
+		7D3C5D19137A1E42006EEE44 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D3C5D14137A1E42006EEE44 /* ZipArchive.mm */; };
+		7D3C5D1B137A2098006EEE44 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D3C5D1A137A2098006EEE44 /* libz.1.2.3.dylib */; };
+		7D3C5D1D137A20CD006EEE44 /* Edition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D3C5D1C137A20CD006EEE44 /* Edition.m */; };
 		7D7859EE13789E6E0023D9D1 /* logo_theweek_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D7859ED13789E6E0023D9D1 /* logo_theweek_icon.png */; };
 		BAE09C751368074C0048E01B /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE09C741368074C0048E01B /* Default-Landscape~ipad.png */; };
 		BAE09C77136808D60048E01B /* TheWeekIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE09C76136808D60048E01B /* TheWeekIcon.png */; };
@@ -86,6 +93,20 @@
 		307D28A1123043350040C0FA /* PhoneGapBuildSettings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = PhoneGapBuildSettings.xcconfig; sourceTree = "<group>"; };
 		30E1352610E2C1420031B30D /* PhoneGap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PhoneGap.plist; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* TheWeek_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheWeek_Prefix.pch; sourceTree = "<group>"; };
+		7D3C5CE1137A1B05006EEE44 /* Edition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edition.h; sourceTree = "<group>"; };
+		7D3C5D0A137A1E42006EEE44 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		7D3C5D0B137A1E42006EEE44 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		7D3C5D0C137A1E42006EEE44 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		7D3C5D0D137A1E42006EEE44 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		7D3C5D0E137A1E42006EEE44 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		7D3C5D0F137A1E42006EEE44 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		7D3C5D10137A1E42006EEE44 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		7D3C5D11137A1E42006EEE44 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		7D3C5D12137A1E42006EEE44 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		7D3C5D13137A1E42006EEE44 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		7D3C5D14137A1E42006EEE44 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		7D3C5D1A137A2098006EEE44 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libz.1.2.3.dylib; sourceTree = "<group>"; };
+		7D3C5D1C137A20CD006EEE44 /* Edition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edition.m; sourceTree = "<group>"; };
 		7D7859ED13789E6E0023D9D1 /* logo_theweek_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_theweek_icon.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TheWeek-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TheWeek-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		BAE09C741368074C0048E01B /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -112,6 +133,7 @@
 				301BF5C3109A6A2B0062928A /* QuartzCore.framework in Frameworks */,
 				301BF5C5109A6A2B0062928A /* SystemConfiguration.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
+				7D3C5D1B137A2098006EEE44 /* libz.1.2.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +143,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7D3C5D08137A1E42006EEE44 /* ZipArchive */,
 				1D3623240D0F684500981E51 /* TheWeekAppDelegate.h */,
 				1D3623250D0F684500981E51 /* TheWeekAppDelegate.m */,
 			);
@@ -179,6 +202,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D3C5D1A137A2098006EEE44 /* libz.1.2.3.dylib */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -227,9 +251,37 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				7D3C5D1C137A20CD006EEE44 /* Edition.m */,
+				7D3C5CE1137A1B05006EEE44 /* Edition.h */,
 			);
 			path = Plugins;
 			sourceTree = SOURCE_ROOT;
+		};
+		7D3C5D08137A1E42006EEE44 /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				7D3C5D09137A1E42006EEE44 /* minizip */,
+				7D3C5D13137A1E42006EEE44 /* ZipArchive.h */,
+				7D3C5D14137A1E42006EEE44 /* ZipArchive.mm */,
+			);
+			path = ZipArchive;
+			sourceTree = "<group>";
+		};
+		7D3C5D09137A1E42006EEE44 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				7D3C5D0A137A1E42006EEE44 /* crypt.h */,
+				7D3C5D0B137A1E42006EEE44 /* ioapi.c */,
+				7D3C5D0C137A1E42006EEE44 /* ioapi.h */,
+				7D3C5D0D137A1E42006EEE44 /* mztools.c */,
+				7D3C5D0E137A1E42006EEE44 /* mztools.h */,
+				7D3C5D0F137A1E42006EEE44 /* unzip.c */,
+				7D3C5D10137A1E42006EEE44 /* unzip.h */,
+				7D3C5D11137A1E42006EEE44 /* zip.c */,
+				7D3C5D12137A1E42006EEE44 /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -356,6 +408,12 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* TheWeekAppDelegate.m in Sources */,
+				7D3C5D15137A1E42006EEE44 /* ioapi.c in Sources */,
+				7D3C5D16137A1E42006EEE44 /* mztools.c in Sources */,
+				7D3C5D17137A1E42006EEE44 /* unzip.c in Sources */,
+				7D3C5D18137A1E42006EEE44 /* zip.c in Sources */,
+				7D3C5D19137A1E42006EEE44 /* ZipArchive.mm in Sources */,
+				7D3C5D1D137A20CD006EEE44 /* Edition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +439,10 @@
 				GCC_PREFIX_HEADER = TheWeek_Prefix.pch;
 				INFOPLIST_FILE = "TheWeek-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = TheWeek;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -395,6 +457,10 @@
 				GCC_PREFIX_HEADER = TheWeek_Prefix.pch;
 				INFOPLIST_FILE = "TheWeek-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = TheWeek;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

@@ -4,7 +4,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 
     <!--Fill the device screen.-->
-    <meta name = "viewport" content = "user-scalable=no,width=device-width" />
+    <meta name="viewport" content="user-scalable=no,width=device-width"/>
 
     <title>The Week</title>
 
@@ -17,7 +17,21 @@
     <script type="text/javascript" src="javascripts/jquery-1.5.2.min.js"></script>
     <script type="text/javascript" src="javascripts/jquery.mobile-1.0a4.1.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="javascripts/phonegap.0.9.5.min.js"></script>
+    <script type="text/javascript" src="Edition.js"></script>
     <script type="text/javascript" src="javascripts/the_week.js"></script>
+    <script type="text/javascript">
+        function download(issueName) {
+            window.plugins.edition.download(
+                    function(result) {
+                        alert('Success!: ' + result);
+                    },
+                    function(result) {
+                        alert("Fail!: " + result);
+                    },
+                    issueName
+                    );
+        }
+    </script>
 </head>
 <body>
 <!-- Start of first page -->
@@ -29,32 +43,39 @@
     <!-- /header -->
 
     <div data-role="content">
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-
-                <a href="issue_20110506.html" data-transition="pop" rel="external">
-                    <img height="200px" src="images/the_week_cover_1.jpg"/></a>
-                <a href="issue_20110506.html" data-transition="pop" rel="external">
-                    <img height="200px" src="images/the_week_cover_2.jpg"/>
+        <div class="edition">
+            <div class="cover">
+                <a href="issue_20110507.html" rel="external">
+                    <img src="images/the_week_cover_1.jpg"/>
                 </a>
-                <a href="issue_20110506.html" data-transition="pop" rel="external">
-                    <img height="200px" src="images/the_week_cover_3.jpg"/>
-                </a>
-
             </div>
-
-            <div class="ui-block-b">
-
-                <div data-inline="true">
-                    <a href="issue_20110506.html" data-role="button" rel="external" data-transition="slide">View</a>
-                    <a href="index.html" data-role="button">Download</a>
-                    <a href="index.html" data-role="button" data-theme="b">Subscribe</a>
-                </div>
-
+            <div class="cover-options" data-inline="true">
+                <a href="issue_20110507.html" data-role="button" rel="external" data-transition="slide">View</a>
+                <a href="#" onclick="download('issue_20110507');" data-role="button">Download</a>
             </div>
-            <!-- block-b -->
         </div>
-        <!-- /grid-a -->
+        <div class="edition">
+            <div class="cover">
+                <a href="issue_20110430.html" rel="external">
+                    <img src="images/the_week_cover_2.jpg"/>
+                </a>
+            </div>
+            <div class="cover-options" data-inline="true">
+                <a href="issue_20110430.html" data-role="button" rel="external" data-transition="slide">View</a>
+                <a href="#" onclick="download('issue_20110430');" data-role="button">Download</a>
+            </div>
+        </div>
+        <div class="edition">
+            <div class="cover">
+                <a href="issue_20110423.html" rel="external">
+                    <img src="images/the_week_cover_3.jpg"/>
+                </a>
+            </div>
+            <div class="cover-options" data-inline="true">
+                <a href="issue_20110423.html" data-role="button" rel="external" data-transition="slide">View</a>
+                <a href="#" onclick="download('issue_20110423');" data-role="button">Download</a>
+            </div>
+        </div>
 
     </div>
     <!-- /content -->
