@@ -21,6 +21,7 @@
     <script type="text/javascript" src="javascripts/the_week.js"></script>
     <script type="text/javascript">
         function download(issueName) {
+            alert('Start download for issue: ' + issueName);
             window.plugins.edition.download(
                     function(result) {
                         alert('Success!: ' + result);
@@ -30,6 +31,7 @@
                     },
                     issueName
                     );
+            alert('Finished download for issue: ' + issueName);
         }
     </script>
 </head>
