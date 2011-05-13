@@ -35,17 +35,12 @@
     NSString *editionDirectoryPath = [NSString stringWithFormat:@"%@/%@", editionsDirectory, issueName];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    
     NSError *error = nil;
     if(![fileManager createDirectoryAtPath:editionsDirectory withIntermediateDirectories:YES attributes:nil error:&error]){
         NSLog(@"Could not create directory: %@ error: \r\n%@", editionsDirectory, error);
     }
     
-    error = nil;
-//    NSDictionary *permissions = [[NSDictionary alloc] initWithObjectsAndKeys:
-//                                @"one", [NSNumber numberWithInt: 1],
-//                                @"two", [NSNumber numberWithInt: 2],
-//                                @"three", [NSNumber numberWithInt: 3],
-//                                nil];
     error = nil;
     if ([fileManager removeItemAtPath:editionDirectoryPath error:&error]) {
         NSLog(@"Deleted edition directory at: %@", editionDirectoryPath);
@@ -80,8 +75,6 @@
         if( range.location != NSNotFound ) {
             continue;
         }
-        
-        NSLog(@"Zip file info: %@ %@ %d (%d)", info.name, info.date, info.size, info.level);
         
         // Locate the file in the zip
         [unzipFile locateFileInZip:info.name];
@@ -141,7 +134,7 @@
     [unzipFile release];
     
     
-    NSString *editionIndexPath = [NSString stringWithFormat:@"%@/%@.html", editionsDirectory, issueName];
+    NSString *editionIndexPath = [NSString stringWithFormat:@"%@/%@.html", editionDirectoryPath, issueName];
     [self writeJavascript: [NSString stringWithFormat:@"%@(\"%@\");", self.successCallback, editionIndexPath]];
 }
 
