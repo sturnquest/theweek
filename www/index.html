@@ -20,18 +20,23 @@
     <script type="text/javascript" src="Edition.js"></script>
     <script type="text/javascript" src="javascripts/the_week.js"></script>
     <script type="text/javascript">
-        function download(issueName) {
+        function download(issueName, link_id) {
             alert('Start download for issue: ' + issueName);
             window.plugins.edition.download(
                     function(result) {
                         alert('Success!: ' + result);
+//                        $(link_id).attr('href', 'file://' + result);
+                        $(link_id).attr('href', 'issue_20110507.html');
                     },
                     function(result) {
                         alert("Fail!: " + result);
                     },
                     issueName
                     );
-            alert('Finished download for issue: ' + issueName);
+        }
+
+        function inspect(link_id) {
+            alert('href: ' + $(link_id).attr('href'));
         }
     </script>
 </head>
@@ -47,35 +52,35 @@
     <div data-role="content">
         <div class="edition">
             <div class="cover">
-                <a href="issue_20110507.html" rel="external">
+                <a href="issue_20110507.html" rel="external" id="week_1">
                     <img src="images/the_week_cover_1.jpg"/>
                 </a>
             </div>
             <div class="cover-options" data-inline="true">
-                <a href="issue_20110507.html" data-role="button" rel="external" data-transition="slide">View</a>
-                <a href="#" onclick="download('issue_20110507');" data-role="button">Download</a>
+                <a href="#" onclick="download('issue_20110507', '#week_1');" data-role="button">Download</a>
+                <a href="#" onclick="inspect('#week_1');" data-role="button">Inspect!</a>
             </div>
         </div>
         <div class="edition">
             <div class="cover">
-                <a href="issue_20110430.html" rel="external">
+                <a href="issue_20110430.html" rel="external" id="week_2">
                     <img src="images/the_week_cover_2.jpg"/>
                 </a>
             </div>
             <div class="cover-options" data-inline="true">
-                <a href="issue_20110430.html" data-role="button" rel="external" data-transition="slide">View</a>
-                <a href="#" onclick="download('issue_20110430');" data-role="button">Download</a>
+                <a href="#" onclick="download('issue_20110507', '#week_2');" data-role="button">Download</a>
+                <a href="#" onclick="inspect('#week_2');" data-role="button">Inspect!</a>
             </div>
         </div>
         <div class="edition">
             <div class="cover">
-                <a href="issue_20110423.html" rel="external">
+                <a href="file:///var/mobile/Applications/47F62DA5-D36C-4649-B937-57DD6D5325E1/Library/Application%20Support/editions/issue_20110507.html" rel="external" id="week_3">
                     <img src="images/the_week_cover_3.jpg"/>
                 </a>
             </div>
             <div class="cover-options" data-inline="true">
-                <a href="issue_20110423.html" data-role="button" rel="external" data-transition="slide">View</a>
-                <a href="#" onclick="download('issue_20110423');" data-role="button">Download</a>
+                <a href="#" onclick="download('issue_20110423', '#week_3');" data-role="button">Download</a>
+                <a href="#" onclick="inspect('#week_3');" data-role="button">Inspect!</a>
             </div>
         </div>
 

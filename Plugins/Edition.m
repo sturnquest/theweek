@@ -41,11 +41,16 @@
     }
     
     error = nil;
-    NSDictionary *permissions = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                @"one", [NSNumber numberWithInt: 1],
-                                @"two", [NSNumber numberWithInt: 2],
-                                @"three", [NSNumber numberWithInt: 3],
-                                nil];
+//    NSDictionary *permissions = [[NSDictionary alloc] initWithObjectsAndKeys:
+//                                @"one", [NSNumber numberWithInt: 1],
+//                                @"two", [NSNumber numberWithInt: 2],
+//                                @"three", [NSNumber numberWithInt: 3],
+//                                nil];
+    error = nil;
+    if ([fileManager removeItemAtPath:editionDirectoryPath error:&error]) {
+        NSLog(@"Deleted edition directory at: %@", editionDirectoryPath);
+    }
+    
     if(![fileManager createDirectoryAtPath:editionDirectoryPath withIntermediateDirectories:YES attributes:nil error:&error]){
         NSLog(@"Could not create edition directory: %@ error: \r\n%@", editionDirectoryPath, error);
     }
@@ -53,26 +58,50 @@
     NSURL *srcURL = [NSURL URLWithString: [NSString stringWithFormat:@"http://173.230.134.125/%@.zip", issueName]];
     NSURL *destinationURL = [NSURL fileURLWithPath: editionZipFilePath];
     
-    NSLog(@"Copy from: %@ to: %@", srcURL, destinationURL);
-    
     error = nil;
-    if (![fileManager copyItemAtURL:srcURL toURL:destinationURL error:&error]) {
-        NSLog(@"Could not copy zip file to: %@ error: \r\n%@", destinationURL, error);
+    if ([fileManager removeItemAtURL:destinationURL error:&error]) {
+        NSLog(@"Deleted file at: %@", destinationURL);
+    }
+    
+    NSData *data = [NSData dataWithContentsOfURL: srcURL];
+    if (![fileManager createFileAtPath:editionZipFilePath contents:data attributes:nil]) {
+        NSLog(@"Could not create zip file at: %@", editionZipFilePath);
+    } else {
+        NSLog(@"Created zip file at: %@", editionZipFilePath);
+        
     }
     
     NSLog(@"Unzip");
     ZipFile *unzipFile= [[ZipFile alloc] initWithFileName:editionZipFilePath mode:ZipFileModeUnzip];
     NSArray *infos= [unzipFile listFileInZipInfos];
     for (FileInZipInfo *info in infos) {
+        
+        NSRange range = [info.name rangeOfString:@"__MACOSX" options:NSCaseInsensitiveSearch];
+        if( range.location != NSNotFound ) {
+            continue;
+        }
+        
         NSLog(@"Zip file info: %@ %@ %d (%d)", info.name, info.date, info.size, info.level);
         
         // Locate the file in the zip
         [unzipFile locateFileInZip:info.name];
         
+        NSString *itemFilePath = [NSString stringWithFormat:@"%@/%@", editionDirectoryPath, info.name];
+        
+        if([itemFilePath hasSuffix:@"/"]){
+            error = nil;
+            NSLog(@"Create item directory: %@", itemFilePath);
+            if(![fileManager createDirectoryAtPath:itemFilePath withIntermediateDirectories:YES attributes:nil error:&error]){
+                NSLog(@"Could not create item directory: %@ error: \r\n%@", itemFilePath, error);
+            }
+            continue;
+        } else if(![fileManager createFileAtPath:itemFilePath contents:nil attributes:nil]) {
+            NSLog(@"Could not create content file at: %@", itemFilePath);
+        }
+        
         // Expand the file in memory
         ZipReadStream *read= [unzipFile readCurrentFileInZip];
-        NSMutableData *buffer= [[NSMutableData alloc] initWithLength:256];
-        NSString *itemFilePath = [NSString stringWithFormat:@"%@/%@", editionDirectoryPath, info.name];
+        NSMutableData *buffer= [[NSMutableData alloc] initWithLength:1024];
         NSFileHandle *file= [NSFileHandle fileHandleForWritingAtPath:itemFilePath];
         
         // Read-then-write buffered loop
@@ -92,21 +121,28 @@
                 break;
             
         } while (YES);
+         
+         [file closeFile];
         
         [read finishedReading];
-        [file closeFile];
         [buffer release];
+        
+        if(![fileManager fileExistsAtPath: itemFilePath]) {
+            NSLog(@"File does not exist! File path: %@", itemFilePath);
+        }
         
         if(![fileManager isReadableFileAtPath: itemFilePath]) {
             NSLog(@"File is not readable! File path: %@", itemFilePath);
         }
         
     }
-
-	[self writeJavascript: [NSString stringWithFormat:@"%@(\"Successfully retrieved issue: %@\");", self.successCallback, issueName]];
     
     [unzipFile close];
     [unzipFile release];
+    
+    
+    NSString *editionIndexPath = [NSString stringWithFormat:@"%@/%@.html", editionsDirectory, issueName];
+    [self writeJavascript: [NSString stringWithFormat:@"%@(\"%@\");", self.successCallback, editionIndexPath]];
 }
 
 @end
