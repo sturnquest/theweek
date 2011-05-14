@@ -94,14 +94,15 @@
         
         // Expand the file in memory
         ZipReadStream *read= [unzipFile readCurrentFileInZip];
-        NSMutableData *buffer= [[NSMutableData alloc] initWithLength:1024];
+        int bufferLength = 20480;
+        NSMutableData *buffer= [[NSMutableData alloc] initWithLength:bufferLength];
         NSFileHandle *file= [NSFileHandle fileHandleForWritingAtPath:itemFilePath];
         
         // Read-then-write buffered loop
         do {
             
             // Reset buffer length
-            [buffer setLength:256];
+            [buffer setLength:bufferLength];
             
             // Expand next chunk of bytes
             int bytesRead= [read readDataWithBuffer:buffer];
@@ -132,6 +133,11 @@
     
     [unzipFile close];
     [unzipFile release];
+    
+    error = nil;
+    if ([fileManager removeItemAtPath:editionZipFilePath error:&error]) {
+        NSLog(@"Deleted edition zip file at: %@", editionDirectoryPath);
+    }
     
     
     NSString *editionIndexPath = [NSString stringWithFormat:@"%@/%@.html", editionDirectoryPath, issueName];
