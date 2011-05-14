@@ -69,6 +69,19 @@ div.multicolumn4 {
     margin-right: auto;
 }
 
+.contents-title {
+    float: left;
+
+    margin-left: 500px;
+
+    font-weight: lighter;
+    padding-top: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 26px;
+    width: 300px;
+}
+
 .edition {
     float: right;
     padding-right: 10px;
