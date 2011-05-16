@@ -23,4 +23,22 @@ $(function() {
         e.preventDefault();
     });
 
+    $('.page-bookmark a').click(function() {
+        alert('Bookmark page: ' + $.mobile.activePage.attr('id'));
+
+        var bookmark = $.mobile.activePage.attr('id');
+        var bookmarks = localStorage["bookmarks"];
+        if (bookmarks == null) {
+            bookmarks = bookmark;
+        } else {
+            bookmarks += ',' + bookmark;
+        }
+
+        localStorage["bookmarks"] = bookmarks;
+    });
+
+    $('#contents-bookmark').click(function() {
+        alert('Bookmarks: ' + localStorage["bookmarks"])
+    });
+
 });
