@@ -207,3 +207,7 @@ div.multicolumn4 {
 .cover img {
     height: 400px;
 }
+
+.hidden {
+    display: none;
+}
