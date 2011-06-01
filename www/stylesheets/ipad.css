@@ -208,6 +208,11 @@ div.multicolumn4 {
     height: 400px;
 }
 
-.hidden {
-    display: none;
+.bookmark-row {
+    width: 100%;
+    padding: 20px;
+}
+
+.bookmark-title {
+    margin-right: 50px;
 }

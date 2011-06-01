@@ -20,6 +20,33 @@
     <script type="text/javascript" src="Edition.js"></script>
     <script type="text/javascript" src="javascripts/the_week.js"></script>
     <script type="text/javascript">
+
+        // Call onDeviceReady when PhoneGap is loaded.
+        //
+        // At this point, the document has loaded but phonegap.js has not.
+        // When PhoneGap is loaded and talking with the native device,
+        // it will call the event `deviceready`.
+        //
+        document.addEventListener("deviceready", changeLinks, false);
+
+        function changeLinks() {
+            $('.cover_page_link').each(function(index) {
+                var issueName = $(this).attr('data-source');
+                var link_id = '#' + $(this).attr('id');
+                window.plugins.edition.scan(
+                        function(result) {
+                            $(link_id).attr('href', 'file://' + result);
+                        },
+                        function(result) {
+                            alert("Fail!: " + result);
+                        },
+                        issueName
+                        );
+            });
+        }
+
+        $(document).ready(changeLinks);
+
         function download(issueName, link_id) {
             alert('Start download for issue: ' + issueName);
             window.plugins.edition.download(
@@ -51,7 +78,8 @@
     <div data-role="content">
         <div class="edition">
             <div class="cover">
-                <a href="issue_20110507.html" rel="external" id="week_1">
+                <a href="issue_20110507.html" rel="external" id="week_1" class="cover_page_link"
+                   data-source="issue_20110507">
                     <img src="images/the_week_cover_1.jpg"/>
                 </a>
             </div>
@@ -62,7 +90,7 @@
         </div>
         <div class="edition">
             <div class="cover">
-                <a href="#" rel="external" id="week_2">
+                <a href="#" rel="external" id="week_2" class="cover_page_link" data-source="issue_20110430">
                     <img src="images/the_week_cover_2.jpg"/>
                 </a>
             </div>
@@ -73,7 +101,7 @@
         </div>
         <div class="edition">
             <div class="cover">
-                <a href="#" rel="external" id="week_3">
+                <a href="#" rel="external" id="week_3" class="cover_page_link" data-source="issue_20110423">
                     <img src="images/the_week_cover_3.jpg"/>
                 </a>
             </div>

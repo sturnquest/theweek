@@ -10,6 +10,43 @@
 
 @synthesize successCallback, failCallback;
 
+-(void) scan:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options {
+    
+    NSLog(@"Scan for editions");
+    
+    NSUInteger argc = [arguments count];
+    
+	if(argc < 2) {
+		return;	
+	}
+    
+    self.successCallback = [arguments objectAtIndex:0];
+	self.failCallback = [arguments objectAtIndex:1];
+    
+    if(argc < 3) {
+		[self writeJavascript: [NSString stringWithFormat:@"%@(\"Argument error\");", self.failCallback]];
+		return;
+	}
+    
+    NSString* issueName = [arguments objectAtIndex:2];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *editionsDirectory = [NSString stringWithFormat:@"%@/editions", [paths objectAtIndex:0]];
+    NSString *editionFilePath = [NSString stringWithFormat:@"%@/%@/%@.html", editionsDirectory, issueName, issueName];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSLog(@"Check for edition at: %@", editionFilePath);
+    
+    if(![fileManager fileExistsAtPath: editionFilePath]) {
+        NSLog(@"File does not exist! File path: %@", editionFilePath);
+    } else {
+        [self writeJavascript: [NSString stringWithFormat:@"%@(\"%@\");", self.successCallback, editionFilePath]];
+    }
+    
+    [fileManager release];
+}
+
 -(void) download:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options {
     
     NSUInteger argc = [arguments count];
@@ -142,6 +179,8 @@
     
     NSString *editionIndexPath = [NSString stringWithFormat:@"%@/%@.html", editionDirectoryPath, issueName];
     [self writeJavascript: [NSString stringWithFormat:@"%@(\"%@\");", self.successCallback, editionIndexPath]];
+    
+    [fileManager release];
 }
 
 @end

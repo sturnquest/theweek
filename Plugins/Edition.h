@@ -10,4 +10,6 @@
 @property (nonatomic, copy) NSString* failCallback;
 
 -(void) download:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+
+-(void) scan:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 @end
