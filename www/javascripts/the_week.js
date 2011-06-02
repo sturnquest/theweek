@@ -12,6 +12,10 @@ function change_page(to_page_id, reverse_transition, transition) {
     return false;
 }
 
+function bookmark_namespace() {
+    return window.location.pathname + '#bookmarks';
+}
+
 $(function() {
 
     $('.page').bind('swipeleft', function(e) {
@@ -32,21 +36,21 @@ $(function() {
         alert('Bookmark page: ' + $.mobile.activePage.attr('id'));
 
         var bookmark = $.mobile.activePage.attr('id');
-        var bookmarks = localStorage["bookmarks"];
+        var bookmarks = localStorage[bookmark_namespace()];
         if (bookmarks == null) {
             bookmarks = bookmark;
         } else {
             bookmarks += ',' + bookmark;
         }
 
-        localStorage["bookmarks"] = bookmarks;
+        localStorage[bookmark_namespace()] = bookmarks;
     });
 
     $('#contents-bookmark').click(function() {
 
         $('#bookmark-container .bookmark-row').remove();
 
-        var bookmarks = localStorage["bookmarks"];
+        var bookmarks = localStorage[bookmark_namespace()];
         if (bookmarks != null) {
             var pages = bookmarks.split(",");
             for (var i = 0; i < pages.length; i++) {
@@ -61,7 +65,7 @@ $(function() {
         $('.remove-bookmark').click(function() {
             var bookMarkPageId = $(this).prev().text();
             $(this).parent().remove();
-            var existingBookmarks = localStorage["bookmarks"].split(',');
+            var existingBookmarks = localStorage[bookmark_namespace()].split(',');
             var remainingBookmarks = '';
             for (var i = 0; i < existingBookmarks.length; i++) {
                 var existingBookmarkPageId = existingBookmarks[i];
@@ -70,7 +74,7 @@ $(function() {
                 }
             }
 
-            localStorage["bookmarks"] = remainingBookmarks;
+            localStorage[bookmark_namespace()] = remainingBookmarks;
         });
 
         change_page('#bookmarks', false, 'slideup');
